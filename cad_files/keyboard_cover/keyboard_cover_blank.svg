@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="24in"
+   height="24in"
+   viewBox="0 0 2160 2160.0001"
+   id="svg4203"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="keyboard cover plain.svg">
+  <defs
+     id="defs4205" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.45380077"
+     inkscape:cx="707.71205"
+     inkscape:cy="107.24476"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     units="in"
+     inkscape:window-width="1280"
+     inkscape:window-height="751"
+     inkscape:window-x="1"
+     inkscape:window-y="1"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata4208">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,1107.6379)">
+    <path
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:3.54150009;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 1.77075,491.63297 1492.70845,0 0,558.95853 -1492.70845,0 z"
+       id="rect4751" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.24602851;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 22.5,1052.2392 c -12.358473,0 -22.37699328,-10.0185 -22.37698555,-22.377"
+       id="path4773"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.24602851;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 1496.127,1029.8622 c 0,12.3585 -10.0185,22.377 -22.377,22.377"
+       id="circle4775"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.44008467;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 67.279957,996.11216 A 11.029958,11.029958 0 0 1 56.25,1007.1421 11.029958,11.029958 0 0 1 45.220042,996.11216 11.029958,11.029958 0 0 1 56.25,985.08216 a 11.029958,11.029958 0 0 1 11.029957,11.03 z"
+       id="path4136"
+       inkscape:connector-curvature="0" />
+    <path
+       id="path4166"
+       d="M 67.279958,546.11216 A 11.029958,11.029958 0 0 1 56.25,557.14206 11.029958,11.029958 0 0 1 45.220042,546.11216 11.029958,11.029958 0 0 1 56.25,535.08216 a 11.029958,11.029958 0 0 1 11.029958,11.03 z"
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.44008467;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:connector-curvature="0" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.44008467;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 1451.03,546.11216 a 11.029958,11.029958 0 0 1 -11.03,11.0299 11.029958,11.029958 0 0 1 -11.03,-11.0299 11.029958,11.029958 0 0 1 11.03,-11.03 11.029958,11.029958 0 0 1 11.03,11.03 z"
+       id="path4168" />
+    <path
+       id="path4170"
+       d="M 1451.0299,996.11216 A 11.029932,11.029959 0 0 1 1440,1007.1421 a 11.029932,11.029959 0 0 1 -11.03,-11.02994 11.029932,11.029959 0 0 1 11.03,-11.03 11.029932,11.029959 0 0 1 11.0299,11.03 z"
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.44008416;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:connector-curvature="0" />
+  </g>
+</svg>
