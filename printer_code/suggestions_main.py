@@ -1,4 +1,11 @@
 import RPi.GPIO as GPIO
+from time import sleep
+import sys
+
+#Time settings
+RELAY_SAFETY_TIME = 0.03
+NEWLINE_TIME = 0.5
+RETURN_TIME = 0.1
 
 upper_pin_dict = {
   17:40,
@@ -106,6 +113,10 @@ movement_chars = {
   "\r" : (18, 16)
 }
 
+Capslock_On = False
+CAPS_PIN_UPPER = 21
+CAPS_PIN_LOWER = 9
+
 ############
 #GPIO setup#
 ############
@@ -164,6 +175,83 @@ def test_pin(pin_in):
       sleep(RELAY_SAFETY_TIME)
   clear_upper_pins()
   clear_lower_pins()
+
+#################################
+#print individual character code#
+#################################
+
+def caps_on():
+  global Capslock_On
+  Capslock_On = True
+  clear_pins()
+  sleep(RELAY_SAFETY_TIME)
+  set_keyboard_pin(20)
+  set_keyboard_pin(9)
+  sleep(RELAY_SAFETY_TIME)
+  clear_pins()
+  sleep(RELAY_SAFETY_TIME)
+ 
+def caps_off():
+  global Capslock_On 
+  Capslock_On = False
+  clear_pins()
+  sleep(RELAY_SAFETY_TIME)
+  set_keyboard_pin(21)
+  set_keyboard_pin(9)
+  sleep(RELAY_SAFETY_TIME)
+  clear_pins()
+  sleep(RELAY_SAFETY_TIME)
+
+def execute_movement_char(input_char):
+  char_tuple = movement_chars[input_char]
+  if(input_char == "\n"):
+    set_keyboard_pin(char_tuple[0])
+    set_keyboard_pin(char_tuple[1])
+    sleep(NEWLINE_TIME)
+  elif(input_char == "\r"):
+    set_keyboard_pin(char_tuple[0])
+    set_keyboard_pin(char_tuple[1])
+    sleep(RETURN_TIME)
+    clear_pins()
+    sleep(RETURN_TIME)
+    set_keyboard_pin(char_tuple[0])
+    set_keyboard_pin(char_tuple[1])
+    sleep(RETURN_TIME)
+  clear_pins()
+  sleep(RELAY_SAFETY_TIME)
+  
+def print_char_tuple(input_char_tuple):
+  set_keyboard_pin(input_char_tuple[0])
+  sleep(RELAY_SAFETY_TIME)
+  set_keyboard_pin(input_char_tuple[1])
+  sleep(RELAY_SAFETY_TIME)
+
+def t_print_char(input_char, keep_caps_on = False):
+  char_tuple = None
+  if input_char in letters:
+    char_tuple = letters[input_char]
+  elif input_char in numbers:
+    char_tuple = numbers[input_char]
+  elif input_char in special_characters:
+    char_tuple = special_characters[input_char]
+  elif input_char in shifted_special_characters:
+    caps_on()
+    char_tuple = shifted_special_characters[input_char]
+  elif input_char.lower() in letters:
+    caps_on()
+    print("caps char " +input_char) 
+    char_tuple = letters[input_char.lower()]
+  elif input_char in movement_chars:
+    execute_movement_char(input_char)
+    return
+  else:
+    print ("input char not supported: " + input_char)
+    return
+  print_char_tuple(char_tuple)
+  turn_caps_off = Capslock_On and not keep_caps_on
+  #print("turn caps off? " + str(turn_caps_off))
+  if turn_caps_off:
+    caps_off()
 
 ########################
 #code that runs on boot#
