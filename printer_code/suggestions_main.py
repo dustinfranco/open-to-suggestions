@@ -127,3 +127,32 @@ def clear_lower_pins(set_value = 1):
 def clear_pins(set_value = 1):
   clear_upper_pins(set_value)
   clear_lower_pins(set_value)
+
+clear_pins()
+
+def set_keyboard_pin(input_pin):
+  if input_pin in upper_pin_dict:
+    clear_upper_pins()
+    clear_lower_pins()
+    sleep(RELAY_SAFETY_TIME)
+    GPIO.output(upper_pin_dict[input_pin], 0)
+  elif input_pin in lower_pin_dict:
+    clear_lower_pins()
+    sleep(RELAY_SAFETY_TIME)
+    GPIO.output(lower_pin_dict[input_pin], 0)
+  else:
+    print(str(input_pin) + " not a valid pin")
+
+def test_pin(pin_in):
+  if(pin_in in lower_pin_dict):
+    for pin_test in upper_pin_dict:
+      set_keyboard_pin(pin_test)
+      set_keyboard_pin(pin_in)
+      sleep(RELAY_SAFETY_TIME)
+  elif(pin_in in upper_pin_dict):
+    for pin_test in lower_pin_dict:
+      set_keyboard_pin(pin_in)
+      set_keyboard_pin(pin_test)
+      sleep(RELAY_SAFETY_TIME)
+  clear_upper_pins()
+  clear_lower_pins()
