@@ -115,3 +115,15 @@ for key,pin in lower_pin_dict.items():
 for key,pin in upper_pin_dict.items():
   GPIO.setup(pin,GPIO.OUT, initial=GPIO.HIGH)
 
+
+def clear_upper_pins(set_value = 1):
+  for key,pin in upper_pin_dict.items():
+    GPIO.output(pin, set_value)
+
+def clear_lower_pins(set_value = 1):
+  for key,pin in lower_pin_dict.items():
+    GPIO.output(pin, set_value)
+
+def clear_pins(set_value = 1):
+  clear_upper_pins(set_value)
+  clear_lower_pins(set_value)
