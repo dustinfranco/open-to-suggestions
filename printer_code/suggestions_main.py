@@ -1,6 +1,7 @@
+import sys
 import RPi.GPIO as GPIO
 from time import sleep
-import sys
+from get_tweets import get_tweet
 
 #Time settings
 RELAY_SAFETY_TIME = 0.03
@@ -252,6 +253,22 @@ def t_print_char(input_char, keep_caps_on = False):
   #print("turn caps off? " + str(turn_caps_off))
   if turn_caps_off:
     caps_off()
+
+########################
+#code related to tweets#
+########################
+
+def get_and_format_tweet():
+  tweet = get_tweet()
+  next_tweet = "----------\n"
+  next_tweet += tweet["name"] + "\n"
+  next_tweet += tweet["time"] + "\n"
+  next_tweet += tweet["text"] + "\n"
+  link_index = next_tweet.find("http")
+  if(link_index > -1):
+    printed_text = next_tweet[0:link_index]
+  return next_tweet
+
 
 ########################
 #code that runs on boot#
