@@ -8,6 +8,14 @@ RELAY_SAFETY_TIME = 0.03
 NEWLINE_TIME = 0.5
 RETURN_TIME = 0.1
 
+#tests
+WHEEL_TEST = "wheel_test" in sys.argv
+ALPHABET_TEST = "alphabet_test" in sys.argv
+PREFACE_TEST = "preface_test" in sys.argv
+#TODO: add pin test
+
+previous_tweets = []
+
 upper_pin_dict = {
   17:40,
   18:38,
@@ -250,9 +258,34 @@ def t_print_char(input_char, keep_caps_on = False):
     return
   print_char_tuple(char_tuple)
   turn_caps_off = Capslock_On and not keep_caps_on
-  #print("turn caps off? " + str(turn_caps_off))
   if turn_caps_off:
     caps_off()
+
+###############
+#print strings#
+###############
+
+def dist_to_char(current_index, input_string, input_char = " "):
+  temp_string = input_string[current_index::]
+  distance_to_char = input_string.find(input_char)
+  return distance_to_char
+
+def t_print_string(input_string):
+  line_total = 0
+  current_index = 0
+  for character in input_string:
+    if character == "\n":
+      line_total = 0
+    if line_total > CHARS_PER_LINE:
+      line_total = 0
+      t_print_char("\n")
+    elif dist_to_char(line_total, input_string) > (CHARS_PER_LINE - line_total):
+      line_total = 0
+      t_print_char("\n") 
+    line_total += 1
+    t_print_char(character)
+  clear_pins()
+  sleep(RELAY_SAFETY_TIME)
 
 ########################
 #code related to tweets#
@@ -277,4 +310,25 @@ def get_and_format_tweet():
 def main():
   gpio_setup()
   clear_pins()
+  while(1):
+    last_tweet = ""
+    if WHEEL_TEST:
+      printed_text = "\n\r"
+    elif ALPHABET_TEST:
+      printed_text = test_alphabet
+    elif PREFACE_TEST:
+      preface_file = open("./the_preface", "r")
+      printed_text = preface_file.read()
+      preface_file.close()
+    else:
+      printed_text = get_and_format_tweet()
+      if printed_text == last_tweet:
+        printed_text = ""
+      else:
+        last_tweet = printed_text
+    if printed_text:   
+      t_print_string(printed_text)
+    sleep(60)
 
+if __name__ == "__main__":
+  main()
