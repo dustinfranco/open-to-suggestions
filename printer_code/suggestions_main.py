@@ -1,3 +1,8 @@
+import RPi.GPIO as GPIO
+
+GPIO.setwarnings(False)
+GPIO.setmode(GPIO.BOARD)
+
 upper_pin_dict = {
   17:40,
   18:38,
@@ -103,3 +108,10 @@ movement_chars = {
   "\n" : (17, 16),
   "\r" : (18, 16)
 }
+
+for key,pin in lower_pin_dict.items():
+  GPIO.setup(pin, GPIO.OUT, initial=GPIO.HIGH)
+
+for key,pin in upper_pin_dict.items():
+  GPIO.setup(pin,GPIO.OUT, initial=GPIO.HIGH)
+
