@@ -13,6 +13,8 @@ WHEEL_TEST = "wheel_test" in sys.argv
 ALPHABET_TEST = "alphabet_test" in sys.argv
 PREFACE_TEST = "preface_test" in sys.argv
 #TODO: add pin test
+test_alphabet = "\n\rAaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz)0!1@2#3$4%5^6&7*8(9+=_-[].,?/\"'\n"
+
 
 previous_tweets = []
 
