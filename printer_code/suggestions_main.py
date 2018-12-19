@@ -1,8 +1,5 @@
 import RPi.GPIO as GPIO
 
-GPIO.setwarnings(False)
-GPIO.setmode(GPIO.BOARD)
-
 upper_pin_dict = {
   17:40,
   18:38,
@@ -109,12 +106,23 @@ movement_chars = {
   "\r" : (18, 16)
 }
 
-for key,pin in lower_pin_dict.items():
-  GPIO.setup(pin, GPIO.OUT, initial=GPIO.HIGH)
+############
+#GPIO setup#
+############
 
-for key,pin in upper_pin_dict.items():
-  GPIO.setup(pin,GPIO.OUT, initial=GPIO.HIGH)
+def gpio_setup():
+  GPIO.setwarnings(False)
+  GPIO.setmode(GPIO.BOARD)
 
+  for key,pin in lower_pin_dict.items():
+    GPIO.setup(pin, GPIO.OUT, initial=GPIO.HIGH)
+
+  for key,pin in upper_pin_dict.items():
+    GPIO.setup(pin,GPIO.OUT, initial=GPIO.HIGH)
+
+############################################
+#functions that interact with pins directly#
+############################################
 
 def clear_upper_pins(set_value = 1):
   for key,pin in upper_pin_dict.items():
@@ -128,7 +136,7 @@ def clear_pins(set_value = 1):
   clear_upper_pins(set_value)
   clear_lower_pins(set_value)
 
-clear_pins()
+#Set keyboard pin enforces always setting upper pin first
 
 def set_keyboard_pin(input_pin):
   if input_pin in upper_pin_dict:
@@ -156,3 +164,12 @@ def test_pin(pin_in):
       sleep(RELAY_SAFETY_TIME)
   clear_upper_pins()
   clear_lower_pins()
+
+########################
+#code that runs on boot#
+########################
+
+def main():
+  gpio_setup()
+  clear_pins()
+
