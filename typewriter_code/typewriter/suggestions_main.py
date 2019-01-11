@@ -1,7 +1,6 @@
 import sys
 import RPi.GPIO as GPIO
 from time import sleep
-from get_tweets import get_tweet
 
 #Time settings
 RELAY_SAFETY_TIME = 0.03
@@ -289,21 +288,6 @@ def t_print_string(input_string):
   clear_pins()
   sleep(RELAY_SAFETY_TIME)
 
-########################
-#code related to tweets#
-########################
-
-def get_and_format_tweet():
-  tweet = get_tweet()
-  next_tweet = "----------\n"
-  next_tweet += tweet["name"] + "\n"
-  next_tweet += tweet["time"] + "\n"
-  next_tweet += tweet["text"] + "\n"
-  link_index = next_tweet.find("http")
-  if(link_index > -1):
-    printed_text = next_tweet[0:link_index]
-  return next_tweet
-
 
 ########################
 #code that runs on boot#
@@ -323,7 +307,7 @@ def main():
       printed_text = preface_file.read()
       preface_file.close()
     else:
-      printed_text = get_and_format_tweet()
+      printed_text = "temporarily nothing"
       if printed_text == last_tweet:
         printed_text = ""
       else:
