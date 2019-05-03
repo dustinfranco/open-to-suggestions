@@ -3,7 +3,7 @@ import RPi.GPIO as GPIO
 from time import sleep
 
 #Time settings
-RELAY_SAFETY_TIME = 0.03
+RELAY_SAFETY_TIME = 0.035
 NEWLINE_TIME = 0.5
 RETURN_TIME = 0.1
 
@@ -14,6 +14,7 @@ PREFACE_TEST = "preface_test" in sys.argv
 #TODO: add pin test
 test_alphabet = "\n\rAaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz)0!1@2#3$4%5^6&7*8(9+=_-[].,?/\"'\n"
 
+CHARS_PER_LINE = 78
 
 previous_tweets = []
 
@@ -303,9 +304,22 @@ def main():
     elif ALPHABET_TEST:
       printed_text = test_alphabet
     elif PREFACE_TEST:
-      preface_file = open("./the_preface", "r")
-      printed_text = preface_file.read()
+      preface_file = open("./preface", "r").read()
+      t_print_string(preface_file)
+      asdfasg
+     
+      preface_file = open("./text_1", "r")
+      newlines_array = [13, 8,14, 0,  4,  3, 75,10]
+      pauses_array   = [ 0, 0, 0, 0, 25, 15, 15, 100000]
+      number_lines = 10
+      for x in range (0,number_lines):
+        t_print_string(preface_file.readline())
+        for m in range (0,newlines_array[x]):
+          t_print_string("\n")
+        for z in range (0,pauses_array[x]):
+          sleep(1)
       preface_file.close()
+      aoiengowapeignwe
     else:
       printed_text = "temporarily nothing"
       if printed_text == last_tweet:
