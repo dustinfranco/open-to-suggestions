@@ -16,7 +16,7 @@ while(1):
   try:
     printed_tweet = False
     print("getting tweets")
-    tweets = gt.get_tweets(10)
+    tweets = reversed(gt.get_tweets(10))
     print("\n\n\n\n")
     for tweet in tweets:
       if(tweet.id not in p_tweets):
@@ -24,11 +24,12 @@ while(1):
         p_tweets.append(tweet.id)
         print("found new tweet: " + tweet.text)
         tweet.text = tweet.text.replace("@SuggestionsPrnt", "")
-        if(tweet.text.find("http")):
+        if(tweet.text.find("http") > -1):
+          print("found http!")
           tweet.text = tweet.text[0:tweet.text.find("http")]
-        sm.t_print_string("////////\n")
+        sm.t_print_string("///////\n")
         sm.t_print_string(tweet.user.screen_name + "\n")
-        sm.t_print_string(tweet.text + "\n")
+        sm.t_print_string(tweet.text + "\n")  
     if not printed_tweet:
       print("no unique tweets")
       time.sleep(10)
